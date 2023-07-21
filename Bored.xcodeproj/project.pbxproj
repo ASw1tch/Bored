@@ -7,18 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F88A1372A6B008400493DB8 /* SettingsVew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F88A1362A6B008400493DB8 /* SettingsVew.swift */; };
+		7F88A1392A6B009300493DB8 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F88A1382A6B009300493DB8 /* FavoritesView.swift */; };
 		7F994BC02A671AC8002BA54B /* BoredApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F994BBF2A671AC8002BA54B /* BoredApp.swift */; };
 		7F994BC22A671AC8002BA54B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F994BC12A671AC8002BA54B /* ContentView.swift */; };
 		7F994BC42A671ACF002BA54B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F994BC32A671ACF002BA54B /* Assets.xcassets */; };
 		7F994BC72A671ACF002BA54B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F994BC62A671ACF002BA54B /* Preview Assets.xcassets */; };
+		7FFE72ED2A69CFDD00354E7F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE72EC2A69CFDD00354E7F /* Model.swift */; };
+		7FFE72EF2A69D01600354E7F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE72EE2A69D01600354E7F /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F88A1362A6B008400493DB8 /* SettingsVew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVew.swift; sourceTree = "<group>"; };
+		7F88A1382A6B009300493DB8 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		7F994BBC2A671AC8002BA54B /* Bored.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bored.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F994BBF2A671AC8002BA54B /* BoredApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoredApp.swift; sourceTree = "<group>"; };
 		7F994BC12A671AC8002BA54B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7F994BC32A671ACF002BA54B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F994BC62A671ACF002BA54B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7FFE72EC2A69CFDD00354E7F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		7FFE72EE2A69D01600354E7F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +43,11 @@
 		7F994BB32A671AC8002BA54B = {
 			isa = PBXGroup;
 			children = (
+				7F88A1382A6B009300493DB8 /* FavoritesView.swift */,
+				7F88A1362A6B008400493DB8 /* SettingsVew.swift */,
+				7FFE72EE2A69D01600354E7F /* ViewModel.swift */,
+				7FFE72EC2A69CFDD00354E7F /* Model.swift */,
+				7F994BC12A671AC8002BA54B /* ContentView.swift */,
 				7F994BBE2A671AC8002BA54B /* Bored */,
 				7F994BBD2A671AC8002BA54B /* Products */,
 			);
@@ -52,7 +65,6 @@
 			isa = PBXGroup;
 			children = (
 				7F994BBF2A671AC8002BA54B /* BoredApp.swift */,
-				7F994BC12A671AC8002BA54B /* ContentView.swift */,
 				7F994BC32A671ACF002BA54B /* Assets.xcassets */,
 				7F994BC52A671ACF002BA54B /* Preview Content */,
 			);
@@ -137,8 +149,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FFE72ED2A69CFDD00354E7F /* Model.swift in Sources */,
 				7F994BC22A671AC8002BA54B /* ContentView.swift in Sources */,
+				7F88A1392A6B009300493DB8 /* FavoritesView.swift in Sources */,
+				7FFE72EF2A69D01600354E7F /* ViewModel.swift in Sources */,
 				7F994BC02A671AC8002BA54B /* BoredApp.swift in Sources */,
+				7F88A1372A6B008400493DB8 /* SettingsVew.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
