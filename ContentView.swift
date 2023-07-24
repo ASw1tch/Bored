@@ -12,6 +12,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var viewModel = contentViewModel()
     @State private var isButtonPressed = false
+    @State private var isSettingsActive = false
     
     var body: some View {
         NavigationStack {
@@ -22,6 +23,27 @@ struct ContentView: View {
                 
                 
                 VStack(spacing: 20) {
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            isSettingsActive = true
+                        })
+                        {
+                            Image(systemName: "gearshape")
+                                .font(.title)
+                                .foregroundColor(.white)
+                        }
+                        .padding(10)
+                        .foregroundColor(Color.white)
+                        
+                        .sheet(isPresented: $isSettingsActive, content: {
+                            SettingsView(settings: (Settings()))
+                        })
+                    }
+                    
+                    Spacer()
+                    
+                    
                     Text("Кажется, ты засиделся, занимаясь бессмысленным скролингом...")
                         .padding(15)
                         .font(Font.system(size: 30))
@@ -36,10 +58,15 @@ struct ContentView: View {
                             case .success(let apiResponse):
                                 DispatchQueue.main.async {
                                     viewModel.activityText = apiResponse.activity
+                                    print(Settings().accessibility)
+                                    print(Settings().type)
+                                    print(Settings().participants)
+                                    print(Settings().price )
                                 }
                             case .failure(let error):
                                 
                                 viewModel.activityText = "Ошибка: \(error.localizedDescription)"
+                                
                             }
                             withAnimation {
                                 isButtonPressed = true
@@ -65,35 +92,24 @@ struct ContentView: View {
                         .font(.body)
                         .foregroundColor(.black)
                         .multilineTextAlignment(.center)
+                    
+                    Spacer()
                 }
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 20, trailing: 10))
                 
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    NavigationLink(destination: FavoritesView()) {
-                        Image(systemName: "star.fill")
-                            .font(.title)
-                            .foregroundColor(.white)
-                    }
-                }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                            NavigationLink(destination: SettingsView()){
-                                Image(systemName: "gearshape")
-                                    .font(.title)
-                                    .foregroundColor(.white)
-                            }
-                        }
-                    }
-                }
-            }
         }
+    }
+}
+
+
 
 
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+        
     }
 }
 

@@ -12,6 +12,7 @@ struct BoredApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+           
         }
     }
 }
