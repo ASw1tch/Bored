@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct Settings {
-    var accessibility: Double = 0.5
-    var type: String = "Social"
-    var participants: Int = 1
-    var price: String = "Free"
-}
 
 
 struct SettingsView: View {
-    @State var settings: Settings
-   
+    
+    @Environment(\.presentationMode) var presentationMode
+    
+    @Binding var accessibility: Double
+    @Binding var type: String
+    @Binding var participants: Int
+    @Binding var price: String
+    
     
     
     var body: some View {
@@ -36,9 +36,9 @@ struct SettingsView: View {
                             startPoint: .trailing,
                             endPoint: .leading
                         )
-                        .mask(Slider(value: $settings.accessibility, in: 0.1...1.0, step: 0.1))
+                        .mask(Slider(value: $accessibility, in: 0.1...1.0, step: 0.1))
                         
-                        Slider(value: $settings.accessibility, in: 0.1...1.0, step: 0.1)
+                        Slider(value: $accessibility, in: 0.1...1.0, step: 0.1)
                         
                         //Uncomment it to paint the sliders's circile
                         //.opacity(0.02)
@@ -54,22 +54,25 @@ struct SettingsView: View {
                 }
                 
                 Section() {
-                    Picker(selection: $settings.type, label: (Text("Type"))) {
+                    Picker(selection: $type, label: (Text("Type"))) {
                         ForEach(["education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork"], id: \.self) { type in
                             Text(type).tag(type)
                         }
-                    }
+                    }.frame(height: 150)
+                        .pickerStyle(WheelPickerStyle())
                 } header: {
                     Text("Type")
                 } footer: {
                     Text("Select the type of assignments you'll receive")
                 }
-                .pickerStyle(WheelPickerStyle())
+                
+                
+                
                 
                 
                 Section() {
-                    Stepper(value: $settings.participants, in: 1...10) {
-                        Text("\(settings.participants)")
+                    Stepper(value: $participants, in: 1...10) {
+                        Text("\(participants)")
                     }
                 }header: {
                     Text("Participants")
@@ -79,7 +82,7 @@ struct SettingsView: View {
                 
                 
                 Section() {
-                    Picker(selection: $settings.price ,label: Text("Price")) {
+                    Picker(selection: $price ,label: Text("Price")) {
                         ForEach(["Free", "Paid"], id: \.self) { price in
                             Text(price).tag(price)
                         }
@@ -90,25 +93,33 @@ struct SettingsView: View {
                     Text("Acntivity cost")
                 }
                 
+                Button ("Done") {
+                    print(accessibility)
+                    print(type)
+                    print(participants)
+                    print(price)
+                    self.presentationMode.wrappedValue.dismiss()
+                }.frame(width: 320, height: 50)
+                    .background(.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
+                    .bold()
             }.pickerStyle(SegmentedPickerStyle())
             
             
-            Section {
-                Button ("So") {
-                    print(settings.accessibility)
-                    print(settings.type)
-                    print(settings.participants)
-                    print(settings.price )
-                }
-            }
+            
         }
     }
 }
 
 
 
+
 struct SettingsView_Previews:PreviewProvider {
     static var previews: some View {
-        SettingsView(settings: (Settings()))
+        SettingsView(accessibility: .constant(0.5),
+                     type: .constant("Educational"),
+                     participants: .constant(1),
+                     price: .constant("Free"))
     }
 }

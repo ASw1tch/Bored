@@ -14,6 +14,11 @@ struct ContentView: View {
     @State private var isButtonPressed = false
     @State private var isSettingsActive = false
     
+    @State private var accessibility: Double = 0.5
+    @State private var type: String = "Social"
+    @State private var participants: Int = 1
+    @State private var price: String = "Free"
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -37,7 +42,10 @@ struct ContentView: View {
                         .foregroundColor(Color.white)
                         
                         .sheet(isPresented: $isSettingsActive, content: {
-                            SettingsView(settings: (Settings()))
+                            SettingsView(accessibility: $accessibility,
+                                         type: $type,
+                                         participants: $participants,
+                                         price: $price)
                         })
                     }
                     
@@ -58,10 +66,10 @@ struct ContentView: View {
                             case .success(let apiResponse):
                                 DispatchQueue.main.async {
                                     viewModel.activityText = apiResponse.activity
-                                    print(Settings().accessibility)
-                                    print(Settings().type)
-                                    print(Settings().participants)
-                                    print(Settings().price )
+                                    print(accessibility)
+                                    print(type)
+                                    print(participants)
+                                    print(price)
                                 }
                             case .failure(let error):
                                 
