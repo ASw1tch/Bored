@@ -11,20 +11,24 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModel = contentViewModel()
+    
+    @State private var retryParameters = contentViewModel.RetryParameters(participants: 1, selectedPrice: "Free")
     @State private var isButtonPressed = false
     @State private var isSettingsActive = false
     
-    @State private var accessibility: Double = 0.5
-    @State private var type: String = "Social"
+    @State private var accessibility: Double = 0.1
+    @State private var selectedType: String = "social"
     @State private var participants: Int = 1
-    @State private var price: String = "Free"
+    @State private var selectedPrice: String = "Free"
     
     var body: some View {
         NavigationStack {
+            
             ZStack {
                 LinearGradient(colors: [Color.init(hex: "C2DEDC"),
                                         Color.init(hex: "116A7B")],
-                               startPoint: .bottom, endPoint: .top).ignoresSafeArea()
+                               startPoint: .bottom, endPoint: .top)
+                .ignoresSafeArea()
                 
                 
                 VStack(spacing: 20) {
@@ -43,9 +47,9 @@ struct ContentView: View {
                         
                         .sheet(isPresented: $isSettingsActive, content: {
                             SettingsView(accessibility: $accessibility,
-                                         type: $type,
+                                         type: $selectedType,
                                          participants: $participants,
-                                         price: $price)
+                                         price: $selectedPrice)
                         })
                     }
                     
@@ -61,19 +65,30 @@ struct ContentView: View {
                     
                     
                     Button("Согласен") {
-                        viewModel.fetchDataFromBoredAPI { result in
+                        viewModel.fetchDataFromBoredAPI(selectedType: selectedType, participants: participants, selectedPrice: selectedPrice, accessibility: accessibility) { result in
                             switch result {
                             case .success(let apiResponse):
                                 DispatchQueue.main.async {
                                     viewModel.activityText = apiResponse.activity
                                     print(accessibility)
-                                    print(type)
+                                    print(selectedType)
                                     print(participants)
-                                    print(price)
+                                    print(selectedPrice)
+                                    print(apiResponse)
                                 }
-                            case .failure(let error):
+                            case .failure(_):
                                 
-                                viewModel.activityText = "Ошибка: \(error.localizedDescription)"
+                                viewModel.fetchDataWithRetry(selectedType: selectedType, retryParameters: retryParameters, accessibility: accessibility, maxRetryCount: 10) { result in
+                                    switch result {
+                                    case .success(let apiResponse):
+                                        viewModel.activityText = apiResponse.activity
+                                        
+                                        print(apiResponse)
+                                    case .failure(let error):
+                                        
+                                        print("Ooops, \(error)")
+                                    }
+                                }
                                 
                             }
                             withAnimation {
@@ -96,14 +111,19 @@ struct ContentView: View {
                     .scaleEffect(isButtonPressed ? 0.7 : 1.0)
                     .bold()
                     
+                    
                     Text(viewModel.activityText)
                         .font(.body)
                         .foregroundColor(.black)
                         .multilineTextAlignment(.center)
+                        .onAppear {
+                           viewModel.activityText = "Pick an activity and push the button👆🏽"
+                        }
                     
                     Spacer()
                 }
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 20, trailing: 10))
+                
                 
             }
         }
@@ -111,13 +131,10 @@ struct ContentView: View {
 }
 
 
-
-
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-        
+           
     }
 }
 

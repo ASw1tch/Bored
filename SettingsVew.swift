@@ -19,7 +19,6 @@ struct SettingsView: View {
     @Binding var price: String
     
     
-    
     var body: some View {
         VStack {
             HStack {
@@ -43,9 +42,7 @@ struct SettingsView: View {
                         //Uncomment it to paint the sliders's circile
                         //.opacity(0.02)
                             .tint(.clear)
-                        
                     }
-                    
                     
                 } header: {
                     Text("Accessibility")
@@ -65,9 +62,6 @@ struct SettingsView: View {
                 } footer: {
                     Text("Select the type of assignments you'll receive")
                 }
-                
-                
-                
                 
                 
                 Section() {
@@ -113,8 +107,6 @@ struct SettingsView: View {
 }
 
 
-
-
 struct SettingsView_Previews:PreviewProvider {
     static var previews: some View {
         SettingsView(accessibility: .constant(0.5),
@@ -123,3 +115,6 @@ struct SettingsView_Previews:PreviewProvider {
                      price: .constant("Free"))
     }
 }
+
+
+
