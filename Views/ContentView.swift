@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FamilyControls
 
 
 
@@ -16,10 +17,15 @@ struct ContentView: View {
     @State private var isButtonPressed = false
     @State private var isSettingsActive = false
     
+    
     @State private var accessibility: Double = 0.1
     @State private var selectedType: String = "social"
     @State private var participants: Int = 1
     @State private var selectedPrice: String = "Free"
+    
+    @State private var isAuthorized = false
+    @StateObject private var model = ScreenTimeSelectAppsModel()
+
     
     var body: some View {
         NavigationStack {
@@ -121,14 +127,40 @@ struct ContentView: View {
                         }
                     
                     Spacer()
+                    
+                    Button("Request Access") {
+                                        Task {
+                                            await requestScreenTimeAccess()
+                                        }
+                                    }
+                                    .padding()
+                                }
+                                .sheet(isPresented: $isAuthorized) {
+                                    ScreenTimeSelectAppsContentView(model: model)
                 }
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 20, trailing: 10))
                 
                 
             }
+            .task {
+                await ScreenTimeApi().requestAuthorization()
+            }
         }
     }
-}
+    
+    func requestScreenTimeAccess() async {
+           let ac = AuthorizationCenter.shared
+           
+           do {
+               try await ac.requestAuthorization(for: .individual)
+               isAuthorized = true
+           } catch {
+               // Handle error here
+               isAuthorized = false
+           }
+       }
+   }
+
 
 
 struct ContentView_Previews: PreviewProvider {

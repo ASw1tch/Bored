@@ -1,5 +1,5 @@
 //
-//  Model.swift
+//  BoredAPIResponseModel.swift
 //  Bored
 //
 //  Created by user1 on 20.07.2023.

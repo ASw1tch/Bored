@@ -7,17 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F320DD32A80491800606132 /* ScreenTimeSelectAppsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F320DD22A80491800606132 /* ScreenTimeSelectAppsModel.swift */; };
+		7F320DD52A804A0B00606132 /* ScreenTimeSelectAppsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F320DD42A804A0B00606132 /* ScreenTimeSelectAppsContentView.swift */; };
+		7F7B80A62A802A3C00B08344 /* ScreenTimeApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7B80A52A802A3C00B08344 /* ScreenTimeApi.swift */; };
 		7F88A1372A6B008400493DB8 /* SettingsVew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F88A1362A6B008400493DB8 /* SettingsVew.swift */; };
 		7F88A1392A6B009300493DB8 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F88A1382A6B009300493DB8 /* FavoritesView.swift */; };
 		7F994BC02A671AC8002BA54B /* BoredApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F994BBF2A671AC8002BA54B /* BoredApp.swift */; };
 		7F994BC22A671AC8002BA54B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F994BC12A671AC8002BA54B /* ContentView.swift */; };
 		7F994BC42A671ACF002BA54B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F994BC32A671ACF002BA54B /* Assets.xcassets */; };
 		7F994BC72A671ACF002BA54B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F994BC62A671ACF002BA54B /* Preview Assets.xcassets */; };
-		7FFE72ED2A69CFDD00354E7F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE72EC2A69CFDD00354E7F /* Model.swift */; };
+		7FFE72ED2A69CFDD00354E7F /* BoredApiResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE72EC2A69CFDD00354E7F /* BoredApiResponseModel.swift */; };
 		7FFE72EF2A69D01600354E7F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE72EE2A69D01600354E7F /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F320DD22A80491800606132 /* ScreenTimeSelectAppsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeSelectAppsModel.swift; sourceTree = "<group>"; };
+		7F320DD42A804A0B00606132 /* ScreenTimeSelectAppsContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeSelectAppsContentView.swift; sourceTree = "<group>"; };
+		7F7B80A52A802A3C00B08344 /* ScreenTimeApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeApi.swift; sourceTree = "<group>"; };
+		7F7B80A72A802D8100B08344 /* Bored.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bored.entitlements; sourceTree = "<group>"; };
 		7F88A1362A6B008400493DB8 /* SettingsVew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVew.swift; sourceTree = "<group>"; };
 		7F88A1382A6B009300493DB8 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		7F994BBC2A671AC8002BA54B /* Bored.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bored.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -25,7 +32,7 @@
 		7F994BC12A671AC8002BA54B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7F994BC32A671ACF002BA54B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F994BC62A671ACF002BA54B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		7FFE72EC2A69CFDD00354E7F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		7FFE72EC2A69CFDD00354E7F /* BoredApiResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoredApiResponseModel.swift; sourceTree = "<group>"; };
 		7FFE72EE2A69D01600354E7F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -40,14 +47,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F7B80A02A80259000B08344 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7FFE72EC2A69CFDD00354E7F /* BoredApiResponseModel.swift */,
+				7F320DD22A80491800606132 /* ScreenTimeSelectAppsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7F7B80A12A8025AD00B08344 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				7FFE72EE2A69D01600354E7F /* ViewModel.swift */,
+				7F7B80A22A8025EF00B08344 /* API & Services */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		7F7B80A22A8025EF00B08344 /* API & Services */ = {
+			isa = PBXGroup;
+			children = (
+				7F7B80A52A802A3C00B08344 /* ScreenTimeApi.swift */,
+			);
+			path = "API & Services";
+			sourceTree = "<group>";
+		};
+		7F7B80A42A8026C200B08344 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7F994BC12A671AC8002BA54B /* ContentView.swift */,
+				7F88A1362A6B008400493DB8 /* SettingsVew.swift */,
+				7F88A1382A6B009300493DB8 /* FavoritesView.swift */,
+				7F320DD42A804A0B00606132 /* ScreenTimeSelectAppsContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7F994BB32A671AC8002BA54B = {
 			isa = PBXGroup;
 			children = (
-				7F88A1382A6B009300493DB8 /* FavoritesView.swift */,
-				7F88A1362A6B008400493DB8 /* SettingsVew.swift */,
-				7FFE72EE2A69D01600354E7F /* ViewModel.swift */,
-				7FFE72EC2A69CFDD00354E7F /* Model.swift */,
-				7F994BC12A671AC8002BA54B /* ContentView.swift */,
+				7F7B80A02A80259000B08344 /* Models */,
+				7F7B80A12A8025AD00B08344 /* View Models */,
+				7F7B80A42A8026C200B08344 /* Views */,
 				7F994BBE2A671AC8002BA54B /* Bored */,
 				7F994BBD2A671AC8002BA54B /* Products */,
 			);
@@ -64,6 +106,7 @@
 		7F994BBE2A671AC8002BA54B /* Bored */ = {
 			isa = PBXGroup;
 			children = (
+				7F7B80A72A802D8100B08344 /* Bored.entitlements */,
 				7F994BBF2A671AC8002BA54B /* BoredApp.swift */,
 				7F994BC32A671ACF002BA54B /* Assets.xcassets */,
 				7F994BC52A671ACF002BA54B /* Preview Content */,
@@ -149,11 +192,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FFE72ED2A69CFDD00354E7F /* Model.swift in Sources */,
+				7FFE72ED2A69CFDD00354E7F /* BoredApiResponseModel.swift in Sources */,
+				7F7B80A62A802A3C00B08344 /* ScreenTimeApi.swift in Sources */,
 				7F994BC22A671AC8002BA54B /* ContentView.swift in Sources */,
 				7F88A1392A6B009300493DB8 /* FavoritesView.swift in Sources */,
+				7F320DD52A804A0B00606132 /* ScreenTimeSelectAppsContentView.swift in Sources */,
 				7FFE72EF2A69D01600354E7F /* ViewModel.swift in Sources */,
 				7F994BC02A671AC8002BA54B /* BoredApp.swift in Sources */,
+				7F320DD32A80491800606132 /* ScreenTimeSelectAppsModel.swift in Sources */,
 				7F88A1372A6B008400493DB8 /* SettingsVew.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,6 +264,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -280,10 +327,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Bored/Bored.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Bored/Preview Content\"";
-				DEVELOPMENT_TEAM = RWP28CYWVZ;
+				DEVELOPMENT_TEAM = U97NB94VHF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -310,10 +358,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Bored/Bored.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Bored/Preview Content\"";
-				DEVELOPMENT_TEAM = RWP28CYWVZ;
+				DEVELOPMENT_TEAM = U97NB94VHF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
