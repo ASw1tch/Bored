@@ -14,7 +14,7 @@ struct ScreenTimeApi {
        func requestAuthorization() async {
            do {
                try await ac.requestAuthorization(for: .individual)
-               print("Access to device activity granted!")
+               print("Access to device activity granted.")
            } catch {
                print("Error requesting authorization: \(error.localizedDescription)")
            }
